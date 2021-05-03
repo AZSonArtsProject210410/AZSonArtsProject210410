@@ -195,7 +195,26 @@ r.free;
 // RIGHT MIC - VOICE
 
 
-//u = signal / crackle
+(
+
+z = SynthDef.new(\mic1,  {
+	arg in= 1, out= 0, amp= 1;
+	var sig;
+	sig = SoundIn.ar(in!2) * amp;
+	Out.ar(out, sig);
+
+}).add;
+
+)
+
+z = Synth(\mic1);
+z.set(\amp, 1;
+z.free;
+
+
+
+
+//u =  crackle
 
 (
 
