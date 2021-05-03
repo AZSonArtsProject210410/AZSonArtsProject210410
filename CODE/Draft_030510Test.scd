@@ -64,6 +64,7 @@ b = ~b2 = Buffer.read(s,"C:/Users/Agapi/Desktop/Hχητικά/ηχοτοπία/i
 
 
 
+
 // Trumpets_2 Drone
 
 
@@ -82,6 +83,7 @@ c = ~b3 = Buffer.read(s,"C:/Users/Agapi/Desktop/Hχητικά/κρατημένο
 
   c.set(\amp, 0.4, \rev, 0.4, \room, 0.6)
   c.free;
+
 
 
 
@@ -133,7 +135,7 @@ d.free;
 
 
 
-///////////  INPUTS ///////////////////
+///////////  INPUTS /////////////////////////////////
 
 
 
@@ -193,14 +195,14 @@ r.free;
 // RIGHT MIC - VOICE
 
 
-//u = signal
+//u = signal / crackle
 
 (
 
 u = SynthDef.new(\mic1,  {
 	arg in= 1, out= 0, amp= 1;
 	var sig;
-	sig = SoundIn.ar(in!2) * amp;
+	sig = SoundIn.ar(in!2) * amp * Crackle.ar(2, 2, 0.5);
 	Out.ar(out, sig);
 
 }).add;
@@ -208,7 +210,7 @@ u = SynthDef.new(\mic1,  {
 )
 
 u = Synth(\mic1);
-u.set(\amp, 1);
+u.set(\amp, 1, \chaos, 1.4, \val, 2);
 u.free;
 
 
